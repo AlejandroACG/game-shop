@@ -3,7 +3,6 @@ import com.svalero.domain.Order;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import org.jdbi.v3.sqlobject.statement.UseRowMapper;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,8 +19,14 @@ public interface OrderDAO {
     @UseRowMapper(OrderMapper.class)
     List<Order> getOrdersByVideogame(int id);
 
-    @SqlUpdate("INSERT INTO ORDERS (ORDER_DATE) VALUES (?)")
-    void addOrder(LocalDate orderDate);
+    @SqlUpdate("INSERT INTO ORDERS (ID_CLIENT, ID_VIDEOGAME, ORDER_DATE) VALUES (?, ?, ?)")
+    void addOrder(int clientId, int videogameId, LocalDate orderDate);
+
+    @SqlUpdate("UPDATE ORDERS SET ID_CLIENT = ?, ID_VIDEOGAME = ?, ORDER_DATE = ? WHERE ID = ?")
+    void modifyOrder(String clientId, String videogameId, LocalDate orderDate, String id);
+
+    @SqlQuery("SELECT EXISTS(SELECT 1 FROM ORDERS WHERE ID = ?)")
+    boolean isOrder(String id);
 
     @SqlUpdate("DELETE FROM ORDERS WHERE ID_ORDER = ?")
     void deleteOrder(int id);
