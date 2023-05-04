@@ -16,6 +16,10 @@ public interface OrderDAO {
     @UseRowMapper(OrderMapper.class)
     List<Order> getOrdersByClient(int id);
 
+    @SqlQuery("SELECT * FROM ORDERS WHERE ID_VIDEOGAME = ?")
+    @UseRowMapper(OrderMapper.class)
+    List<Order> getOrdersByVideogame(int id);
+
     @SqlUpdate("INSERT INTO ORDERS (ORDER_DATE) VALUES (?)")
     void addOrder(LocalDate orderDate);
 

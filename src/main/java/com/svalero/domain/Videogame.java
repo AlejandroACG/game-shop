@@ -19,7 +19,6 @@ public class Videogame {
     private LocalDate releaseDate;
     @NonNull
     private double price;
-    //TODO LO SIGUIENTE HAY QUE MAPEARLO EN EL MAPPER TAMBIÉN
-//    @NonNull
-//    private List<Order> orders;
+    @NonNull
+    private List<Order> orders;
 }
