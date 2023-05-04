@@ -6,18 +6,17 @@ import org.jdbi.v3.sqlobject.statement.UseRowMapper;
 import java.time.LocalDate;
 import java.util.List;
 
-public class VideogameDAO {
-    public interface ClientDAO {
-        @SqlQuery("SELECT * FROM VIDEOGAMES")
-        @UseRowMapper(OrderMapper.class)
-        List<Order> getVideogames();
+public interface VideogameDAO {
+    @SqlQuery("SELECT * FROM VIDEOGAMES")
+    @UseRowMapper(OrderMapper.class)
+    List<Order> getVideogames();
 
-        @SqlUpdate("INSERT INTO VIDEOGAMES (NAME, RELEASE_DATE, PRICE) VALUES (?, ?, ?)")
-        void addVideogame(String name, LocalDate releaseDate, double price);
+    @SqlUpdate("INSERT INTO VIDEOGAMES (NAME, RELEASE_DATE, PRICE) VALUES (?, ?, ?)")
+    void addVideogame(String name, LocalDate releaseDate, double price);
 
-        @SqlUpdate("DELETE FROM VIDEOGAMES WHERE ID_VIDEOGAME = ?")
-        void deleteClient(int id);
-    }
+    @SqlUpdate("DELETE FROM VIDEOGAMES WHERE ID_VIDEOGAME = ?")
+    void deleteClient(int id);
+}
 
 
 
@@ -75,4 +74,3 @@ public class VideogameDAO {
 ////    private List<Videogame> select(String sql) {
 ////
 ////    }
-}
