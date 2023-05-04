@@ -11,13 +11,11 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @NoArgsConstructor
 public class Order {
-    @NonNull
-    int id;
+    private int id;
     @NonNull
     private LocalDate orderDate;
-    //TODO LO SIGUIENTE HAY QUE MAPEARLO EN EL MAPPER TAMBIÉN
-//    @NonNull
-//    private Videogame client;
-//    @NonNull
-//    private Videogame videogame;
+    @NonNull
+    private Client client;
+    @NonNull
+    private Videogame videogame;
 }

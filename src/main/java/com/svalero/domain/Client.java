@@ -23,7 +23,6 @@ public class Client {
     private String email;
     @NonNull
     private String dni;
-    //TODO LO SIGUIENTE HAY QUE MAPEARLO EN EL MAPPER TAMBIÉN
-//    @NonNull
-//    private List<Order> orders;
+    @NonNull
+    private List<Order> orders;
 }
