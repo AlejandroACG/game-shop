@@ -12,6 +12,10 @@ public interface OrderDAO {
     @UseRowMapper(OrderMapper.class)
     List<Order> getOrders();
 
+    @SqlQuery("SELECT * FROM ORDERS WHERE ID_CLIENT = ?")
+    @UseRowMapper(OrderMapper.class)
+    List<Order> getOrdersByClient(int id);
+
     @SqlUpdate("INSERT INTO ORDERS (ORDER_DATE) VALUES (?)")
     void addOrder(LocalDate orderDate);
 
