@@ -20,5 +20,7 @@ public class Videogame {
     @NonNull
     private double price;
     @NonNull
+    String picture;
+    @NonNull
     private List<Order> orders;
 }

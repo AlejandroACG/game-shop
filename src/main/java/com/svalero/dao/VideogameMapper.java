@@ -19,6 +19,7 @@ public class VideogameMapper implements RowMapper<Videogame> {
                 rs.getString("NAME"),
                 rs.getDate("RELEASE_DATE").toLocalDate(),
                 rs.getDouble("PRICE"),
+                rs.getString("PICTURE"),
                 orders);
     }
 }
