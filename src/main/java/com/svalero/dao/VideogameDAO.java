@@ -25,5 +25,5 @@ public interface VideogameDAO {
     boolean isVideogame(String id);
 
     @SqlUpdate("DELETE FROM VIDEOGAMES WHERE ID_VIDEOGAME = ?")
-    void deleteClient(int id);
+    void deleteVideogame(int id);
 }
