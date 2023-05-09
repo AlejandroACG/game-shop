@@ -53,7 +53,7 @@ public class AddEditVideogameServlet extends HttpServlet {
             Database.connect();
             if (action.equals("edit")) {
                 Database.jdbi.withExtension(VideogameDAO.class, dao -> {
-                    dao.editVideogame(name, releaseDate, price, pictureName, id);
+                    dao.modifyVideogame(name, releaseDate, price, pictureName, id);
                     return null;
                 });
                 out.println("<div style='margin-top: 20px;' class='alert alert-success' role='alert'>Videogame edited successfully.</div>");

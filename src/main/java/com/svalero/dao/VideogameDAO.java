@@ -18,8 +18,8 @@ public interface VideogameDAO {
     @SqlUpdate("INSERT INTO VIDEOGAMES (NAME, RELEASE_DATE, PRICE, PICTURE) VALUES (?, ?, ?, ?)")
     void addVideogame(String name, LocalDate releaseDate, double price, String picture);
 
-    @SqlUpdate("UPDATE VIDEOGAMES SET NAME = ?, RELEASE_DATE = ?, PRICE = ? WHERE ID = ?")
-    void modifyVideogame(String name, LocalDate releaseDate, double price, String id);
+    @SqlUpdate("UPDATE VIDEOGAMES SET NAME = ?, RELEASE_DATE = ?, PRICE = ?, PICTURE = ? WHERE ID_VIDEOGAME = ?")
+    void modifyVideogame(String name, LocalDate releaseDate, double price, String picture, int id);
 
     @SqlQuery("SELECT EXISTS(SELECT 1 FROM VIDEOGAMES WHERE ID = ?)")
     boolean isVideogame(String id);
