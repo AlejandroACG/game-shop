@@ -1,25 +1,11 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content=""/>
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors"/>
-    <meta name="generator" content="Hugo 0.111.3"/>
+  <head>
     <title>Game Shop</title>
-
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js" integrity="sha512-UVd/huM7QxW1quuU7nnEgNlCJbQwOTlNvLKgjZ83d/w0d0/FlxCM9/9BxxmYjOeTW/LGwOee+GOt2QrZpbE3jg==" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#712cf9">
 
     <style>
@@ -118,16 +104,6 @@
       </symbol>
     </svg>
 
-<div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-    <a href="" style="margin-right: 15px;" onclick="scrollToTop(); return false;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-up-square" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-        </svg>
-    </a>
-</div>
-
-<script> function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); } </script>
-
 <header data-bs-theme="dark">
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container">
@@ -139,9 +115,9 @@
         <strong>Game Shop</strong>
       </a>
       <div style="margin: 0 auto;" class="btn-group" role="group">
-        <a href="list-videogames.jsp" class="btn btn-outline-primary">Videogames</button>
-        <a href="button" class="btn btn-outline-primary">Clients</a>
-        <a href="button" class="btn btn-outline-primary">Orders</a>
+        <a href="videogame-list.jsp" class="btn btn-outline-primary">Videogames</button>
+        <a href="client-list.jsp" class="btn btn-outline-primary">Clients</a>
+        <a href="order-list.jsp" class="btn btn-outline-primary">Orders</a>
       </div>
     </div>
   </div>

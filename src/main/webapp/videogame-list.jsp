@@ -12,7 +12,7 @@
         <h1 class="fw-light">Game Shop Management</h1>
         <p class="lead text-body-secondary">Manage our videogames</p>
         <p>
-          <a href="add-videogame.jsp" class="btn btn-primary my-2">Register new videogame</a>
+          <a href="videogame-form.jsp?action=register" class="btn btn-primary my-2">Add videogame</a>
         </p>
       </div>
     </div>
@@ -20,7 +20,6 @@
 
   <div class="album py-5 bg-body-tertiary">
     <div class="container">
-
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <%
             Database.connect();
@@ -29,13 +28,14 @@
         %>
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <img src="../game-shop_data/games/<%= videogame.getPicture() %>" class="bd-placeholder-img card-img-top"/>
             <div class="card-body">
                   <p class="card-text"><%= videogame.getName() %> (<%= videogame.getReleaseDate() %>)</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a href="videogame-details.jsp?id=<%= videogame.getId() %>" class="btn btn-sm btn-outline-secondary">View</a>
-                  <a href="edit-videogame.jsp?id=<%= videogame.getId() %>" class="btn btn-sm btn-outline-secondary">Edit</a>
+                  <a href="videogame-form.jsp?id=<%= videogame.getId() %>&action=edit" class="btn btn-sm btn-outline-secondary">Edit</a>
+                  <a href="delete-videogame?id=<%= videogame.getId() %>" class="btn btn-sm btn-outline-warning">Delete</a>
                 </div>
                 <small class="text-body-secondary">€<%= videogame.getPrice() %></small>
               </div>

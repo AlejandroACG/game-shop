@@ -3,15 +3,30 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $("form").on("submit", function(event) {
-            event.preventDefault();
-            var formValue = $(this).serialize();
-            $.post("insert-videogame", formValue, function(data) {
-                $("#result").html(data);
+        $("form").submit(function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                url: $(this).attr("action"),
+                type: $(this).attr("method"),
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    $("#result").html(data);
+                },
+                error: function(xhr, status, error) {
+                    console.log("Error: " + error);
+                }
             });
         });
     });
 </script>
+
+
+<%
+    String action = request.getParameter("action");
+%>
 
 <main>
     <div style="margin-top: 20px;" class="container">
@@ -21,7 +36,8 @@
             <li class="breadcrumb-item active">Add videogame</li>
           </ol>
         </nav>
-        <form class="row g-3">
+
+        <form class="row g-3" method="post" action="edit-videogame" enctype="multipart/form-data">
             <div class="col-md-6">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name" name="name">
@@ -35,10 +51,21 @@
                 <input type="date" class="form-control" id="releaseDate" name="releaseDate">
             </div>
             <div class="col-md-6">
-                <label for="picture" class="form-label">Picture</label>
+                <label for="picture" class="form-label">Cover</label>
                 <input type="file" class="form-control" id="picture" name="picture">
             </div>
-            <button type="submit" class="btn btn-primary">Add videogame</button>
+            <input type="hidden" name="action" value="<% request.getParameter(action); %>"/>
+            <%
+                if (action.equals("edit")) {
+                String id = request.getParameter("id");
+            %>
+            <input type="hidden" name="id" value="<% request.getParameter(id); %>"/>
+            <%
+                }
+            %>
+            <div class="col-12">
+                <input type="submit" value="Commit"/>
+            </div>
         </form>
         <div id="result"></div>
     </div>

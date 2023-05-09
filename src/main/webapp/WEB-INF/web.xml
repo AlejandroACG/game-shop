@@ -1,3 +1,13 @@
 <web-app>
     <display-name>Game shop web app</display-name>
+    <context-param>
+        <description>Path where videogame pictures are saved</description>
+        <param-name>game-pic-path</param-name>
+        <param-value>C:\Users\acris\Dropbox\apache-tomcat-10.1.8\webapps\game-shop_data\games</param-value>
+    </context-param>
+    <context-param>
+        <description>Path where client pictures are saved</description>
+        <param-name>client-pic-path</param-name>
+        <param-value>C:\Users\acris\Dropbox\apache-tomcat-10.1.8\webapps\game-shop_data\clients</param-value>
+    </context-param>
 </web-app>
