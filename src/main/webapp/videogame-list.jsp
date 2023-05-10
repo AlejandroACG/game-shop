@@ -3,6 +3,8 @@
 <%@ page import="com.svalero.dao.VideogameDAO" %>
 <%@ page import="com.svalero.domain.Videogame" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="java.util.Locale" %>
 
 <%@ include file="includes/header.jsp" %>
 <main>
@@ -30,7 +32,7 @@
           <div class="card shadow-sm">
             <img src="../game-shop_data/games/<%= videogame.getPicture() %>" class="bd-placeholder-img card-img-top"/>
             <div class="card-body">
-                  <p class="card-text"><%= videogame.getName() %> (<%= videogame.getReleaseDate() %>)</p>
+                  <p class="card-text"><%= videogame.getName() %> (<%= videogame.getReleaseDate().format(DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH)) %>)</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a href="videogame-details.jsp?id=<%= videogame.getId() %>" class="btn btn-sm btn-outline-secondary">View</a>

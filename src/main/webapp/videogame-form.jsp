@@ -62,14 +62,18 @@
                 <label for="picture" class="form-label">Cover</label>
                 <input type="file" class="form-control" id="picture" name="picture">
             </div>
-            <input type="hidden" name="action" value="<%= action %>"/>
             <%
                 if (action.equals("edit")) {
             %>
-            <input type="hidden" name="id" value='<%= request.getParameter("id") %>'/>
+            <div class="col-md-6">
+                <label for="deletePicture" class="form-label">Select for default cover picture: </label>
+                <input type="checkbox" class="form-check-input" id="deletePicture" name="deletePicture">
+                <input type="hidden" name="id" value='<%= request.getParameter("id") %>'/>
+            </div>
             <%
                 }
             %>
+            <input type="hidden" name="action" value="<%= action %>"/>
             <div class="col-12">
                 <input type="submit" value="Commit"/>
             </div>
