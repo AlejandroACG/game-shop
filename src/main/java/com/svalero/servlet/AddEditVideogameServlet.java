@@ -44,7 +44,6 @@ public class AddEditVideogameServlet extends HttpServlet {
         String pictureName;
 
         try {
-            //TODO Comprobar cuando haya internet que lo que he escrito para deletePicture funciona tanto aquí como desde videogame-form.jsp.
             Database.connect();
             Videogame videogame = Database.jdbi.withExtension(VideogameDAO.class, dao -> dao.getVideogame(id));
             if (picturePart.getSize() == 0 && action.equals("edit") && !deletePicture) {

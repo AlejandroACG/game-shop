@@ -18,11 +18,11 @@ public interface ClientDAO {
     @SqlUpdate("INSERT INTO CLIENTS (FIRST_NAME, FAMILY_NAME, BIRTH_DATE, EMAIL, DNI) VALUES (?, ?, ?, ?, ?)")
     void addClient(String firstName, String familyName, LocalDate birthDate, String email, String dni);
 
-    @SqlUpdate("UPDATE VIDEOGAMES SET FIRST_NAME = ?, FAMILY_NAME = ?, BIRTH_DATE = ?, EMAIL = ?, DNI = ? WHERE ID = ?")
-    void modifyClient(String firstName, String familyName, LocalDate birthDate, String email, String dni, String id);
+    @SqlUpdate("UPDATE VIDEOGAMES SET FIRST_NAME = ?, FAMILY_NAME = ?, BIRTH_DATE = ?, EMAIL = ?, DNI = ? WHERE ID_CLIENT = ?")
+    void modifyClient(String firstName, String familyName, LocalDate birthDate, String email, String dni, int id);
 
-    @SqlQuery("SELECT EXISTS(SELECT 1 FROM CLIENTS WHERE ID = ?)")
-    boolean isClient(String id);
+    @SqlQuery("SELECT EXISTS(SELECT 1 FROM CLIENTS WHERE ID_CLIENT = ?)")
+    boolean isClient(int id);
 
     @SqlUpdate("DELETE FROM CLIENTS WHERE ID_CLIENT = ?")
     void deleteClient(int id);

@@ -22,11 +22,11 @@ public interface OrderDAO {
     @SqlUpdate("INSERT INTO ORDERS (ID_CLIENT, ID_VIDEOGAME, ORDER_DATE) VALUES (?, ?, ?)")
     void addOrder(int clientId, int videogameId, LocalDate orderDate);
 
-    @SqlUpdate("UPDATE ORDERS SET ID_CLIENT = ?, ID_VIDEOGAME = ?, ORDER_DATE = ? WHERE ID = ?")
-    void modifyOrder(String clientId, String videogameId, LocalDate orderDate, String id);
+    @SqlUpdate("UPDATE ORDERS SET ID_CLIENT = ?, ID_VIDEOGAME = ?, ORDER_DATE = ? WHERE ID_ORDER = ?")
+    void modifyOrder(String clientId, String videogameId, LocalDate orderDate, int id);
 
-    @SqlQuery("SELECT EXISTS(SELECT 1 FROM ORDERS WHERE ID = ?)")
-    boolean isOrder(String id);
+    @SqlQuery("SELECT EXISTS(SELECT 1 FROM ORDERS WHERE ID_ORDER = ?)")
+    boolean isOrder(int id);
 
     @SqlUpdate("DELETE FROM ORDERS WHERE ID_ORDER = ?")
     void deleteOrder(int id);

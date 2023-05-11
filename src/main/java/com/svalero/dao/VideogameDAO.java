@@ -11,6 +11,14 @@ public interface VideogameDAO {
     @UseRowMapper(VideogameMapper.class)
     List<Videogame> getVideogames();
 
+    @SqlQuery("SELECT * FROM VIDEOGAMES WHERE NAME LIKE '%' || ? || '%' AND PRICE < ?")
+    @UseRowMapper(VideogameMapper.class)
+    List<Videogame> getVideogamesByNamePrice(String name, double price);
+
+    @SqlQuery("SELECT * FROM VIDEOGAMES WHERE PRICE < ?")
+    @UseRowMapper(VideogameMapper.class)
+    List<Videogame> getVideogamesByPrice(double price);
+
     @SqlQuery("SELECT * FROM VIDEOGAMES WHERE ID_VIDEOGAME = ?")
     @UseRowMapper(VideogameMapper.class)
     Videogame getVideogame(int id);
@@ -21,12 +29,12 @@ public interface VideogameDAO {
     @SqlUpdate("UPDATE VIDEOGAMES SET NAME = ?, RELEASE_DATE = ?, PRICE = ?, PICTURE = ? WHERE ID_VIDEOGAME = ?")
     void modifyVideogame(String name, LocalDate releaseDate, double price, String picture, int id);
 
-    @SqlQuery("SELECT EXISTS(SELECT 1 FROM VIDEOGAMES WHERE ID = ?)")
-    boolean isVideogame(String id);
+    @SqlQuery("SELECT EXISTS(SELECT 1 FROM VIDEOGAMES WHERE ID_VIDEOGAME = ?)")
+    boolean isVideogame(int id);
+
+    @SqlQuery("SELECT CEIL(MAX(PRICE)) AS MAX_PRICE FROM VIDEOGAMES")
+    int getMaxPrice();
 
     @SqlUpdate("DELETE FROM VIDEOGAMES WHERE ID_VIDEOGAME = ?")
     void deleteVideogame(int id);
-
-    @SqlUpdate("UPDATE VIDEOGAMES NAME = ?, RELEASE_DATE = ?, PRICE = ?, PICTURE = ? WHERE ID = ?")
-    void editVideogame(String name, LocalDate releaseDate, double price, String picture, int id);
 }

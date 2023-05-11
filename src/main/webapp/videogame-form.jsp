@@ -48,15 +48,15 @@
         <form class="row g-3" method="post" action="edit-videogame" enctype="multipart/form-data">
             <div class="col-md-6">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="<%= name %>">
+                <input type="text" class="form-control" id="name" name="name" value="<%= name %>" required>
             </div>
             <div class="col-md-6">
                 <label for="price" class="form-label">Price</label>
-                <input type="text" class="form-control" id="price" name="price" value="<%= price %>">
+                <input type="text" class="form-control" id="price" name="price" value="<%= price %>" required>
             </div>
             <div class="col-md-6">
                 <label for="releaseDate">Release date</label>
-                <input type="date" class="form-control" id="releaseDate" name="releaseDate" value="<%= releaseDate %>">
+                <input type="date" class="form-control" id="releaseDate" name="releaseDate" value="<%= releaseDate %>" required>
             </div>
             <div class="col-md-6">
                 <label for="picture" class="form-label">Cover</label>
