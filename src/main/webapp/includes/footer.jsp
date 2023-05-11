@@ -6,12 +6,31 @@
     </div>
 </footer>
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-        <a href="" style="margin-right: 15px;" onclick="scrollToTop(); return false;">
+        <a href="#" style="margin-right: 15px;" onclick="scrollToTop(); return false;" id="scrollToTopButton">
             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-up-square" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
             </svg>
         </a>
     </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            var scrollToTopButton = document.getElementById('scrollToTopButton');
+
+            function checkScrollContent() {
+                var contentHeight = document.documentElement.scrollHeight;
+                var viewportHeight = window.innerHeight;
+
+                if (contentHeight > viewportHeight) {
+                    scrollToTopButton.style.display = 'block';
+                } else {
+                    scrollToTopButton.style.display = 'none'; // Ocultar el botón
+                }
+            }
+            window.addEventListener('load', checkScrollContent);
+            window.addEventListener('resize', checkScrollContent);
+        });
+    </script>
     <script> function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); } </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

@@ -47,30 +47,10 @@
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <%
-            if (request.getAttribute("videogames") == null) {
-                for (Videogame videogame : videogames) {
-        %>
-        <div class="col">
-          <div class="card shadow-sm">
-            <img src="../game-shop_data/games/<%= videogame.getPicture() %>" class="bd-placeholder-img card-img-top"/>
-            <div class="card-body">
-                  <p class="card-text"><%= videogame.getName() %> (<%= videogame.getReleaseDate().format(DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH)) %>)</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a href="videogame-details.jsp?id=<%= videogame.getId() %>" class="btn btn-sm btn-outline-secondary">View</a>
-                  <a href="videogame-form.jsp?id=<%= videogame.getId() %>&action=edit&name=<%= videogame.getName() %>&releaseDate=<%= videogame.getReleaseDate() %>&price=<%= videogame.getPrice() %>" class="btn btn-sm btn-outline-secondary">Edit</a>
-                  <a href="delete-videogame?id=<%= videogame.getId() %>" class="btn btn-sm btn-outline-warning">Delete</a>
-                </div>
-                <small class="text-body-secondary">€<%= videogame.getPrice() %></small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <%
-                }
-            } else {
+            if (request.getAttribute("videogames") != null) {
                 videogames = (List<Videogame>) request.getAttribute("videogames");
-                for (Videogame videogame : videogames) {
+            }
+            for (Videogame videogame : videogames) {
         %>
         <div class="col">
           <div class="card shadow-sm">
@@ -89,7 +69,6 @@
           </div>
         </div>
         <%
-                }
             }
         %>
       </div>
