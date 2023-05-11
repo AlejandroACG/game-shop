@@ -41,7 +41,13 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="videogame-list.jsp">Videogames</a></li>
-            <li class="breadcrumb-item active">Add videogame</li>
+            <li class="breadcrumb-item active">
+                <% if (action.equals("register")) {
+                    %>Add videogame<%
+                } else {
+                    %>Edit <%= name %><%
+                } %>
+            </li>
           </ol>
         </nav>
 
