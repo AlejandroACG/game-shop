@@ -22,7 +22,7 @@ public class DeleteVideogameServlet extends HttpServlet {
                 return null;
             });
 
-            response.sendRedirect(request.getHeader("Referer"));
+            response.sendRedirect("videogame-list.jsp");
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
         }
