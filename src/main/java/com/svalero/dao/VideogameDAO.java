@@ -11,11 +11,11 @@ public interface VideogameDAO {
     @UseRowMapper(VideogameMapper.class)
     List<Videogame> getVideogames();
 
-    @SqlQuery("SELECT * FROM VIDEOGAMES WHERE UPPER(NAME) LIKE UPPER('%' || ? || '%') AND PRICE < ?")
+    @SqlQuery("SELECT * FROM VIDEOGAMES WHERE UPPER(NAME) LIKE UPPER('%' || ? || '%') AND PRICE <= ?")
     @UseRowMapper(VideogameMapper.class)
     List<Videogame> getVideogamesByNamePrice(String name, double price);
 
-    @SqlQuery("SELECT * FROM VIDEOGAMES WHERE PRICE < ?")
+    @SqlQuery("SELECT * FROM VIDEOGAMES WHERE PRICE <= ?")
     @UseRowMapper(VideogameMapper.class)
     List<Videogame> getVideogamesByPrice(double price);
 
