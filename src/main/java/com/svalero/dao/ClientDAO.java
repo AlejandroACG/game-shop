@@ -13,7 +13,7 @@ public interface ClientDAO {
 
     @SqlQuery("SELECT * FROM CLIENTS WHERE ID_CLIENT = ?")
     @UseRowMapper(ClientMapper.class)
-    Client getClient(int id);
+    Client getClient(String id);
 
     @SqlUpdate("INSERT INTO CLIENTS (FIRST_NAME, FAMILY_NAME, BIRTH_DATE, EMAIL, DNI) VALUES (?, ?, ?, ?, ?)")
     void addClient(String firstName, String familyName, LocalDate birthDate, String email, String dni);
@@ -22,8 +22,8 @@ public interface ClientDAO {
     void modifyClient(String firstName, String familyName, LocalDate birthDate, String email, String dni, int id);
 
     @SqlQuery("SELECT EXISTS(SELECT 1 FROM CLIENTS WHERE ID_CLIENT = ?)")
-    boolean isClient(int id);
+    boolean isClient(String id);
 
     @SqlUpdate("DELETE FROM CLIENTS WHERE ID_CLIENT = ?")
-    void deleteClient(int id);
+    void deleteClient(String id);
 }

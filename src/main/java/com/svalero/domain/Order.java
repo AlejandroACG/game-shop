@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @NoArgsConstructor
 public class Order {
-    private int id;
+    private String id;
     @NonNull
     private LocalDate orderDate;
     @NonNull

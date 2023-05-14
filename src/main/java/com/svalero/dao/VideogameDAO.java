@@ -21,20 +21,20 @@ public interface VideogameDAO {
 
     @SqlQuery("SELECT * FROM VIDEOGAMES WHERE ID_VIDEOGAME = ?")
     @UseRowMapper(VideogameMapper.class)
-    Videogame getVideogame(int id);
+    Videogame getVideogame(String id);
 
     @SqlUpdate("INSERT INTO VIDEOGAMES (NAME, RELEASE_DATE, PRICE, PICTURE) VALUES (?, ?, ?, ?)")
     void addVideogame(String name, LocalDate releaseDate, double price, String picture);
 
     @SqlUpdate("UPDATE VIDEOGAMES SET NAME = ?, RELEASE_DATE = ?, PRICE = ?, PICTURE = ? WHERE ID_VIDEOGAME = ?")
-    void modifyVideogame(String name, LocalDate releaseDate, double price, String picture, int id);
+    void modifyVideogame(String name, LocalDate releaseDate, double price, String picture, String id);
 
     @SqlQuery("SELECT EXISTS(SELECT 1 FROM VIDEOGAMES WHERE ID_VIDEOGAME = ?)")
-    boolean isVideogame(int id);
+    boolean isVideogame(String id);
 
     @SqlQuery("SELECT CEIL(MAX(PRICE)) AS MAX_PRICE FROM VIDEOGAMES")
     int getMaxPrice();
 
     @SqlUpdate("DELETE FROM VIDEOGAMES WHERE ID_VIDEOGAME = ?")
-    void deleteVideogame(int id);
+    void deleteVideogame(String id);
 }
