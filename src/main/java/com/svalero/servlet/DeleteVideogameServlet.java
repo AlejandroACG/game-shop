@@ -13,7 +13,7 @@ public class DeleteVideogameServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
 
         try {
             Database.connect();

@@ -19,6 +19,10 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.UUID;
 
+// TODO Renombrar addedit-videogame y cambiar donde toque (en las form).
+// TODO Personalizar los mensajes de confirmación de éxito con los nombres de los videojuegos. Los breadcrumbs si no los personalicé hacerlo también.
+// TODO La parte de añadir imágenes con tantos if y varias veces la condición actions "edit" revisarla por si no se puede hacer mejor.
+// TODO Revisar que no creo ningún objeto o llamo a ningún método que luego no vaya a utilizar.
 @WebServlet("/edit-videogame")
 @MultipartConfig
 public class AddEditVideogameServlet extends HttpServlet {
@@ -32,10 +36,10 @@ public class AddEditVideogameServlet extends HttpServlet {
         LocalDate releaseDate = Utils.dateReverseFormatter(request.getParameter("releaseDate"));
         double price = Double.parseDouble(request.getParameter("price"));
 
-        int id, idTemp = 0;
+        String id, idTemp = null;
         String action = request.getParameter("action");
         if (action.equals("edit")) {
-            idTemp = Integer.parseInt(request.getParameter("id"));
+            idTemp = request.getParameter("id");
         }
         id = idTemp;
 
