@@ -4,28 +4,6 @@
 <%@ page import="com.svalero.domain.Videogame" %>
 <%@ include file="includes/header.jsp" %>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("form").submit(function(e) {
-            e.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-                url: $(this).attr("action"),
-                type: $(this).attr("method"),
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(data) {
-                    $("#result").html(data);
-                },
-                error: function(xhr, status, error) {
-                    console.log("Error: " + error);
-                }
-            });
-        });
-    });
-</script>
-
 <%
     String action = request.getParameter("action");
     String name = request.getParameter("name");
@@ -35,6 +13,40 @@
     String releaseDate = request.getParameter("releaseDate");
     if (releaseDate == null) releaseDate= "";
 %>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("form").submit(function(e) {
+            e.preventDefault();
+
+            var name = document.querySelector("input[name='name']").value;
+            var action = "<%= action %>";
+
+            if (action === "edit") {
+                var confirmation = confirm("Are you sure you want to edit <%= name %> into " + name + "?");
+            } else {
+                var confirmation = confirm("Are you sure you want to register " + name + "?");
+            }
+
+            if (confirmation) {
+                var formData = new FormData(this);
+                $.ajax({
+                    url: $(this).attr("action"),
+                    type: $(this).attr("method"),
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        $("#result").html(data);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Error: " + error);
+                    }
+                });
+            }
+        });
+    });
+</script>
 
 <main>
     <div style="margin-top: 20px;" class="container">
