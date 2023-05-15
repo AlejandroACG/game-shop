@@ -60,8 +60,8 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a href="videogame-details.jsp?id=<%= videogame.getId() %>" class="btn btn-sm btn-outline-secondary">View</a>
-                  <a href="videogame-form.jsp?id=<%= videogame.getId() %>&action=edit&name=<%= videogame.getName() %>&releaseDate=<%= videogame.getReleaseDate() %>&price=<%= videogame.getPrice() %>" class="btn btn-sm btn-outline-secondary">Edit</a>
-                  <a href="delete-videogame?id=<%= videogame.getId() %>" class="btn btn-sm btn-outline-warning delete-button" data-videogame-id="<%= videogame.getId() %>" data-videogame-name="<%= videogame.getName() %>" data-videogame-release-date="<%= videogame.getReleaseDate().format(DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH)) %>">Delete</a>
+                  <a href="videogame-form.jsp?id=<%= videogame.getId() %>&action=edit&name=<%= videogame.getName() %>&releaseDate=<%= videogame.getReleaseDate() %>&price=<%= videogame.getPrice() %>" class="btn btn-sm btn-outline-dark">Edit</a>
+                  <a href="delete-videogame?id=<%= videogame.getId() %>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Do you really want to delete <%= videogame.getName() %> (<%= videogame.getReleaseDate().format(DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH)) %>) ?');">Delete</a>
                 </div>
                 <small class="text-body-secondary">€<%= videogame.getPrice() %></small>
               </div>
@@ -74,43 +74,5 @@
       </div>
     </div>
   </div>
-
-    <div class="modal" id="confirmationModal" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="confirmationModalLabel">Confirmation required</h5>
-              </div>
-              <div class="modal-body">
-                  <p id="confirmationMessage"></p>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" id="confirm-button">Confirm</button>
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              </div>
-          </div>
-      </div>
-    </div>
-    <script>
-      $(document).ready(function() {
-        $(".delete-button").click(function(e) {
-          e.preventDefault();
-
-          var videogameName = $(this).data("videogame-name");
-          var videogameReleaseDate = $(this).data("videogame-release-date");
-
-          $("#confirmationMessage").text("Do you really want to delete " + videogameName + " (" + videogameReleaseDate + ")?");
-          $("#confirmationModal").modal("show");
-
-          var cardToRemove = $(this).closest(".card");
-
-          $("#confirm-button").click(function() {
-            cardToRemove.remove();
-
-            $("#confirmationModal").modal("hide");
-          });
-        });
-      });
-    </script>
 </main>
 <%@ include file="includes/footer.jsp" %>

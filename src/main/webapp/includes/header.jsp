@@ -157,7 +157,7 @@
         <strong>Game Shop</strong>
       </a>
       <div style="margin: 0 auto;" class="btn-group" role="group">
-        <a href="videogame-list.jsp" class="btn btn-outline-primary">Videogames</button>
+        <a href="videogame-list.jsp" class="btn btn-outline-primary" action="list">Videogames</button>
         <a href="client-list.jsp" class="btn btn-outline-primary">Clients</a>
         <a href="order-list.jsp" class="btn btn-outline-primary">Orders</a>
       </div>
