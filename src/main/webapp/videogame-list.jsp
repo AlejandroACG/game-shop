@@ -61,7 +61,7 @@
                 <div class="btn-group">
                   <a href="videogame-details.jsp?id=<%= videogame.getId() %>" class="btn btn-sm btn-outline-secondary">View</a>
                   <a href="videogame-form.jsp?id=<%= videogame.getId() %>&action=edit&name=<%= videogame.getName() %>&releaseDate=<%= videogame.getReleaseDate() %>&price=<%= videogame.getPrice() %>" class="btn btn-sm btn-outline-dark">Edit</a>
-                  <a href="delete-videogame?id=<%= videogame.getId() %>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Do you really want to delete <%= videogame.getName() %> (<%= videogame.getReleaseDate().format(DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH)) %>) ?');">Delete</a>
+                  <a href="#" class="btn btn-sm btn-outline-danger delete-button" data-id="<%= videogame.getId() %>" data-name="<%= videogame.getName() %>" data-release-date="<%= videogame.getReleaseDate().format(DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH)) %>" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">Delete</a>
                 </div>
                 <small class="text-body-secondary">€<%= videogame.getPrice() %></small>
               </div>
@@ -72,7 +72,48 @@
             }
         %>
       </div>
+
+      <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirmation required</h5>
+            </div>
+            <div class="modal-body">
+              <p id="deleteConfirmationMessage"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" id="deleteConfirmButton">Delete</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const deleteButtons = document.querySelectorAll('.delete-button');
+      const deleteConfirmationModal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'));
+      const deleteConfirmationMessage = document.getElementById('deleteConfirmationMessage');
+      const deleteConfirmButton = document.getElementById('deleteConfirmButton');
+      let deleteVideoGameId = '';
+
+      deleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          deleteVideoGameId = this.getAttribute('data-id');
+          const name = this.getAttribute('data-name');
+          const releaseDate = this.getAttribute('data-release-date');
+          deleteConfirmationMessage.textContent = "Do you really want to delete " + name + " (" + releaseDate + ")?";
+        });
+      });
+
+      deleteConfirmButton.addEventListener('click', function() {
+        window.location.href = "delete-videogame?id=" + deleteVideoGameId;
+        deleteConfirmationModal.hide();
+      });
+    });
+  </script>
 </main>
 <%@ include file="includes/footer.jsp" %>
