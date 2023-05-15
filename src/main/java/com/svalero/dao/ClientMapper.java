@@ -16,6 +16,7 @@ public class ClientMapper implements RowMapper<Client> {
                 rs.getString("FAMILY_NAME"),
                 rs.getDate("BIRTH_DATE").toLocalDate(),
                 rs.getString("EMAIL"),
-                rs.getString("DNI"));
+                rs.getString("DNI"),
+                rs.getString("PICTURE"));
     }
 }

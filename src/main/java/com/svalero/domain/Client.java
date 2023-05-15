@@ -23,4 +23,6 @@ public class Client {
     private String email;
     @NonNull
     private String dni;
+    @NonNull
+    String picture;
 }

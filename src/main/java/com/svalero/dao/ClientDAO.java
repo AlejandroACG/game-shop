@@ -15,11 +15,11 @@ public interface ClientDAO {
     @UseRowMapper(ClientMapper.class)
     Client getClient(String id);
 
-    @SqlUpdate("INSERT INTO CLIENTS (FIRST_NAME, FAMILY_NAME, BIRTH_DATE, EMAIL, DNI) VALUES (?, ?, ?, ?, ?)")
-    void addClient(String firstName, String familyName, LocalDate birthDate, String email, String dni);
+    @SqlUpdate("INSERT INTO CLIENTS (FIRST_NAME, FAMILY_NAME, BIRTH_DATE, EMAIL, DNI, PICTURE) VALUES (?, ?, ?, ?, ?, ?)")
+    void addClient(String firstName, String familyName, LocalDate birthDate, String email, String dni, String picture);
 
-    @SqlUpdate("UPDATE VIDEOGAMES SET FIRST_NAME = ?, FAMILY_NAME = ?, BIRTH_DATE = ?, EMAIL = ?, DNI = ? WHERE ID_CLIENT = ?")
-    void modifyClient(String firstName, String familyName, LocalDate birthDate, String email, String dni, int id);
+    @SqlUpdate("UPDATE VIDEOGAMES SET FIRST_NAME = ?, FAMILY_NAME = ?, BIRTH_DATE = ?, EMAIL = ?, DNI = ?, PICTURE = ? WHERE ID_CLIENT = ?")
+    void modifyClient(String firstName, String familyName, LocalDate birthDate, String email, String dni, String id, String picture);
 
     @SqlQuery("SELECT EXISTS(SELECT 1 FROM CLIENTS WHERE ID_CLIENT = ?)")
     boolean isClient(String id);
