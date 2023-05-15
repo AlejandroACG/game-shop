@@ -29,7 +29,7 @@
           </ol>
         </nav>
         <div class="form-div">
-            <form class="row g-3" method="post" action="edit-videogame" enctype="multipart/form-data">
+            <form class="row g-3" method="post" action="addedit-videogame" enctype="multipart/form-data">
                 <div class="col-md-6">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" id="name" name="name" value="<%= name %>" required>
