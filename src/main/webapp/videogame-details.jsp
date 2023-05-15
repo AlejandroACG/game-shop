@@ -5,7 +5,7 @@
 
 <%@ include file="includes/header.jsp" %>
 <%
-    int id = Integer.parseInt(request.getParameter("id"));
+    String id = Integer.parseInt(request.getParameter("id"));
     try {
     Database.connect();
     } catch (ClassNotFoundException cnfe) {
