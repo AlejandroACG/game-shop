@@ -5,6 +5,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.util.Locale" %>
+<%@ page import="java.util.stream.Collectors" %>
 
 <%@ include file="includes/header.jsp" %>
 <main>
@@ -47,10 +48,21 @@
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <%
+            int currentPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+            int recordsPerPage = 9;
+            int initialValue = (currentPage - 1) * recordsPerPage + 1;
+            int finalValue = currentPage * recordsPerPage;
+
             if (request.getAttribute("videogames") != null) {
                 videogames = (List<Videogame>) request.getAttribute("videogames");
             }
-            for (Videogame videogame : videogames) {
+
+            List<Videogame> paginatedVideogames = videogames.stream()
+                .skip(initialValue - 1)
+                .limit(recordsPerPage)
+                .collect(Collectors.toList());
+
+            for (Videogame videogame : paginatedVideogames) {
         %>
         <div class="col">
           <div class="card shadow-sm">
@@ -73,7 +85,7 @@
         %>
       </div>
 
-      <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+      <div class="modal fade" id="deleteConfirmationModal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -88,6 +100,29 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <nav>
+          <ul class="pagination">
+            <%
+              int totalPages = (int) Math.ceil((double)videogames.size() / recordsPerPage);
+
+              for (int i = 1; i <= totalPages; i++) {
+                if (currentPage == i) {
+            %>
+            <li class="page-item active">
+              <a class="page-link" href="#"><%= i %></a>
+            </li>
+            <% } else { %>
+            <li class="page-item">
+              <a class="page-link" href="videogame-list.jsp?page=<%= i %>"><%= i %></a>
+            </li>
+            <%
+                }
+              }
+            %>
+          </ul>
+        </nav>
       </div>
     </div>
   </div>
