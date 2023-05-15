@@ -73,7 +73,7 @@
                 </div>
             </form>
         </div>
-        <div class="modal" id="confirmationModal" tabindex="-1">
+        <div class="modal fade" id="confirmationModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
