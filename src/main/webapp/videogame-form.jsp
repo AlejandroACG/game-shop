@@ -50,7 +50,7 @@
                     if (action.equals("edit")) {
                 %>
                 <div class="col-md-6">
-                    <label for="deletePicture" class="form-label">Select for default cover picture: </label>
+                    <label for="deletePicture" class="form-label">Check this box to use our default cover picture: </label>
                     <input type="checkbox" class="form-check-input" id="deletePicture" name="deletePicture">
                     <input type="hidden" name="id" value='<%= request.getParameter("id") %>'/>
                     <input type="hidden" name="action" value="edit">
