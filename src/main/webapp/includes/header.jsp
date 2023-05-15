@@ -5,6 +5,8 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
     <meta name="theme-color" content="#712cf9">
 
@@ -157,7 +159,7 @@
         <strong>Game Shop</strong>
       </a>
       <div style="margin: 0 auto;" class="btn-group" role="group">
-        <a href="videogame-list.jsp" class="btn btn-outline-primary" action="list">Videogames</button>
+        <a href="videogame-list.jsp" class="btn btn-outline-primary">Videogames</button>
         <a href="client-list.jsp" class="btn btn-outline-primary">Clients</a>
         <a href="order-list.jsp" class="btn btn-outline-primary">Orders</a>
       </div>
