@@ -11,6 +11,14 @@
     <meta name="theme-color" content="#712cf9">
 
     <style>
+        input[type="checkbox"] {
+            border: 2px solid #007bff;
+            background-color: white;
+            width: 1rem;
+            height: 1rem;
+            cursor: pointer;
+        }
+
         .modal-dialog {
             max-width: 400px;
         }
