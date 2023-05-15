@@ -3,12 +3,54 @@
   <head>
     <title>Game Shop</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"/>
 
     <meta name="theme-color" content="#712cf9">
 
     <style>
+        .modal-dialog {
+            max-width: 400px;
+        }
+
+        .modal-content {
+            background-color: #f7f7f7;
+            border-radius: 10px;
+        }
+
+        .modal-title {
+            color: #333;
+            font-size: 18px;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .form-div {
+
+        }
+
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
