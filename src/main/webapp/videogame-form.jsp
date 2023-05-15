@@ -28,7 +28,7 @@
             </li>
           </ol>
         </nav>
-        <div class="form-div">
+        <div class="form-div" style="max-width: 600px; margin: 0 auto;">
             <form class="row g-3" method="post" action="addedit-videogame" enctype="multipart/form-data">
                 <div class="col-md-6">
                     <label for="name" class="form-label">Name</label>
