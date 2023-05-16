@@ -15,6 +15,10 @@ public interface ClientDAO {
     @UseRowMapper(ClientMapper.class)
     List<Client> getClientsOrderByFamilyName();
 
+    @SqlQuery("SELECT * FROM CLIENTS WHERE UPPER(FIRST_NAME || ' ' || FAMILY_NAME) LIKE UPPER('%' || ? || '%') ORDER BY FAMILY_NAME")
+    @UseRowMapper(ClientMapper.class)
+    List<Client> getClientsByFullNameOrderByFamilyName(String fullName);
+
     @SqlQuery("SELECT * FROM CLIENTS WHERE ID_CLIENT = ?")
     @UseRowMapper(ClientMapper.class)
     Client getClient(String id);

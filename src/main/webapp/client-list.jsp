@@ -10,6 +10,7 @@
 
 <%@ include file="includes/header.jsp" %>
 <main>
+  <% session.removeAttribute("videogames"); %>
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
@@ -22,8 +23,8 @@
 
         <form class="row g-3" method="post" action="search-client">
             <div class="col-md-6 mx-auto text-center">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <label for="fullName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="fullName" name="fullName">
             </div>
             <div>
                 <input type="submit" value="Search"/>
