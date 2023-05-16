@@ -101,10 +101,10 @@
         <nav>
           <ul class="pagination">
             <%
-              int totalPages = (int) Math.ceil((double)clients.size() / recordsPerPage);
-
-              for (int i = 1; i <= totalPages; i++) {
-                if (currentPage == i) {
+                int totalPages = (int) Math.ceil((double)clients.size() / recordsPerPage);
+                if (totalPages > 1) {
+                    for (int i = 1; i <= totalPages; i++) {
+                        if (currentPage == i) {
             %>
             <li class="page-item active">
               <a class="page-link" href="#"><%= i %></a>
@@ -114,8 +114,9 @@
               <a class="page-link" href="client-list.jsp?page=<%= i %>"><%= i %></a>
             </li>
             <%
+                        }
+                    }
                 }
-              }
             %>
           </ul>
         </nav>
