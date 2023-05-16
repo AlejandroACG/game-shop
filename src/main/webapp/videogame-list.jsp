@@ -8,6 +8,7 @@
 <%@ page import="java.util.stream.Collectors" %>
 
 <%@ include file="includes/header.jsp" %>
+
 <main>
   <section class="py-5 text-center container">
     <div class="row py-lg-5">

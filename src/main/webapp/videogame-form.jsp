@@ -2,6 +2,7 @@
 <%@ page import="com.svalero.dao.Database" %>
 <%@ page import="com.svalero.dao.VideogameDAO" %>
 <%@ page import="com.svalero.domain.Videogame" %>
+
 <%@ include file="includes/header.jsp" %>
 
 <%
