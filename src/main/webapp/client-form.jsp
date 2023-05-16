@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="com.svalero.dao.Database" %>
-<%@ page import="com.svalero.dao.VideogameDAO" %>
-<%@ page import="com.svalero.domain.Videogame" %>
+<%@ page import="com.svalero.dao.ClientDAO" %>
+<%@ page import="com.svalero.domain.Client" %>
 
 <%@ include file="includes/header.jsp" %>
 
@@ -10,42 +10,54 @@
     session.removeAttribute("clients");
 
     String action = request.getParameter("action");
-    String name = request.getParameter("name");
-    if (name == null) name = "";
-    String price = request.getParameter("price");
-    if (price == null) price = "";
-    String releaseDate = request.getParameter("releaseDate");
-    if (releaseDate == null) releaseDate= "";
+    String firstName = request.getParameter("firstName");
+    if (firstName == null) firstName = "";
+    String familyName = request.getParameter("familyName");
+    if (familyName == null) familyName = "";
+    String birthDate = request.getParameter("birthDate");
+    if (birthDate == null) birthDate= "";
+    String email = request.getParameter("email");
+    if (email == null) email = "";
+    String dni = request.getParameter("dni");
+    if (dni == null) dni = "";
 %>
 
 <main>
     <div style="margin-top: 20px;" class="container">
         <nav>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="videogame-list.jsp">Videogames</a></li>
+            <li class="breadcrumb-item"><a href="client-list.jsp">Clients</a></li>
             <li class="breadcrumb-item active">
                 <% if (action.equals("register")) {
-                    %>Add videogame<%
+                    %>Add client<%
                 } else {
-                    %>Edit <%= name %><%
+                    %>Edit <%= firstName %> <%= familyName %><%
                 } %>
             </li>
           </ol>
         </nav>
 
         <div class="form-div" style="max-width: 600px; margin: 0 auto;">
-            <form class="row g-3" method="post" action="addedit-videogame" enctype="multipart/form-data">
+            <form class="row g-3" method="post" action="addedit-client" enctype="multipart/form-data">
                 <div class="col-md-6">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" value="<%= name %>" required>
+                    <label for="firstName" class="form-label">First name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" value="<%= firstName %>" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="price" class="form-label">Price</label>
-                    <input type="number" class="form-control" id="price" name="price" step="0.01" value="<%= price %>" required>
+                    <label for="familyName" class="form-label">Last name</label>
+                    <input type="text" class="form-control" id="familyName" name="familyName" value="<%= familyName %>" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="releaseDate">Release date</label>
-                    <input type="date" class="form-control" id="releaseDate" name="releaseDate" value="<%= releaseDate %>" required>
+                    <label for="birthDate">Birthdate</label>
+                    <input type="date" class="form-control" id="birthDate" name="birthDate" value="<%= birthDate %>" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" value="<%= email %>" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="dni" class="form-label">DNI</label>
+                    <input type="text" class="form-control" id="dni" name="dni" pattern="[0-9]{8}[A-Za-z]{1}" value="<%= dni %>" required>
                 </div>
                 <div class="col-md-6">
                     <label for="picture" class="form-label">Cover</label>
@@ -56,7 +68,7 @@
                 %>
                 <div class="col-md-6">
                     <div class="form-check">
-                        <label for="deletePicture" class="form-check-label">Check this box to use our default cover picture</label>
+                        <label for="deletePicture" class="form-check-label">Check this box to use our default client picture</label>
                         <input type="checkbox" class="form-check-input" id="deletePicture" name="deletePicture">
                     </div>
                     <input type="hidden" name="id" value='<%= request.getParameter("id") %>'/>
@@ -105,13 +117,14 @@
             $("form").submit(function(e) {
                 e.preventDefault();
 
-                var name = document.querySelector("input[name='name']").value;
+                var firstName = document.querySelector("input[name='firstName']").value;
+                var familyName = document.querySelector("input[name='familyName']").value;
                 var action = "<%= action %>";
 
                 if (action === "edit") {
-                    $("#confirmationMessage").text("Are you sure you want to edit <%= name %>?");
+                    $("#confirmationMessage").text("Are you sure you want to edit <%= firstName %> <%= familyName %>?");
                 } else {
-                    $("#confirmationMessage").text("Are you sure you want to register " + name + "?");
+                    $("#confirmationMessage").text("Are you sure you want to register " + firstName + " " + familyName + "?");
                 }
                 $("#confirmationModal").modal("show");
             });

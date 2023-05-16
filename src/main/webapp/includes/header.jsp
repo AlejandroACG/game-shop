@@ -11,20 +11,22 @@
     <meta name="theme-color" content="#712cf9">
 
     <style>
-        input[type="checkbox"] {
+        input[type="checkbox"],
+        input[type="radio"],
+        input[type="text"],
+        input[type="date"],
+        input[type="file"],
+        input[type="number"],
+        input[type="email"] {
             border: 2px solid #007bff;
             background-color: white;
-            width: 1rem;
-            height: 1rem;
             cursor: pointer;
         }
 
+        input[type="checkbox"],
         input[type="radio"] {
-                    border: 2px solid #007bff;
-                    background-color: white;
-                    width: 1rem;
-                    height: 1rem;
-                    cursor: pointer;
+            width: 1rem;
+            height: 1rem;
         }
 
         .modal-dialog {
@@ -138,6 +140,7 @@
         }
         body {
           margin-bottom: 60px;
+          background-color: lightgray;
         }
         footer {
             position: absolute;

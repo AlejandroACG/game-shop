@@ -8,6 +8,9 @@
 <%@ page import="java.util.stream.Collectors" %>
 
 <%@ include file="includes/header.jsp" %>
+
+<% session.removeAttribute("clients"); %>
+
 <main>
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
@@ -122,10 +125,10 @@
         <nav>
           <ul class="pagination">
             <%
-              int totalPages = (int) Math.ceil((double)videogames.size() / recordsPerPage);
-
-              for (int i = 1; i <= totalPages; i++) {
-                if (currentPage == i) {
+                int totalPages = (int) Math.ceil((double)videogames.size() / recordsPerPage);
+                if (totalPages > 1) {
+                    for (int i = 1; i <= totalPages; i++) {
+                        if (currentPage == i) {
             %>
             <li class="page-item active">
               <a class="page-link" href="#"><%= i %></a>
@@ -135,8 +138,9 @@
               <a class="page-link" href="videogame-list.jsp?page=<%= i %>"><%= i %></a>
             </li>
             <%
+                        }
+                    }
                 }
-              }
             %>
           </ul>
         </nav>
@@ -150,11 +154,11 @@
       const deleteConfirmationModal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'));
       const deleteConfirmationMessage = document.getElementById('deleteConfirmationMessage');
       const deleteConfirmButton = document.getElementById('deleteConfirmButton');
-      let deleteVideoGameId = '';
+      let videogameId = '';
 
       deleteButtons.forEach(button => {
         button.addEventListener('click', function() {
-          deleteVideoGameId = this.getAttribute('data-id');
+          videogameId = this.getAttribute('data-id');
           const name = this.getAttribute('data-name');
           const releaseDate = this.getAttribute('data-release-date');
           deleteConfirmationMessage.textContent = "Do you really want to delete " + name + " (" + releaseDate + ")?";
@@ -162,7 +166,7 @@
       });
 
       deleteConfirmButton.addEventListener('click', function() {
-        window.location.href = "delete-videogame?id=" + deleteVideoGameId;
+        window.location.href = "delete-videogame?id=" + videogameId;
         deleteConfirmationModal.hide();
       });
     });

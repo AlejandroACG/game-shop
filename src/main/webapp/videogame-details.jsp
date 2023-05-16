@@ -4,8 +4,11 @@
 <%@ page import="com.svalero.domain.Videogame" %>
 
 <%@ include file="includes/header.jsp" %>
+
 <%
     session.removeAttribute("videogames");
+    session.removeAttribute("clients");
+
     String id = request.getParameter("id");
     try {
     Database.connect();

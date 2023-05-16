@@ -11,6 +11,14 @@ public interface ClientDAO {
     @UseRowMapper(ClientMapper.class)
     List<Client> getClients();
 
+    @SqlQuery("SELECT * FROM CLIENTS ORDER BY FAMILY_NAME")
+    @UseRowMapper(ClientMapper.class)
+    List<Client> getClientsOrderByFamilyName();
+
+    @SqlQuery("SELECT * FROM CLIENTS WHERE UPPER(FIRST_NAME || ' ' || FAMILY_NAME) LIKE UPPER('%' || ? || '%') ORDER BY FAMILY_NAME")
+    @UseRowMapper(ClientMapper.class)
+    List<Client> getClientsByFullNameOrderByFamilyName(String fullName);
+
     @SqlQuery("SELECT * FROM CLIENTS WHERE ID_CLIENT = ?")
     @UseRowMapper(ClientMapper.class)
     Client getClient(String id);
@@ -18,8 +26,8 @@ public interface ClientDAO {
     @SqlUpdate("INSERT INTO CLIENTS (FIRST_NAME, FAMILY_NAME, BIRTH_DATE, EMAIL, DNI, PICTURE) VALUES (?, ?, ?, ?, ?, ?)")
     void addClient(String firstName, String familyName, LocalDate birthDate, String email, String dni, String picture);
 
-    @SqlUpdate("UPDATE VIDEOGAMES SET FIRST_NAME = ?, FAMILY_NAME = ?, BIRTH_DATE = ?, EMAIL = ?, DNI = ?, PICTURE = ? WHERE ID_CLIENT = ?")
-    void modifyClient(String firstName, String familyName, LocalDate birthDate, String email, String dni, String id, String picture);
+    @SqlUpdate("UPDATE CLIENTS SET FIRST_NAME = ?, FAMILY_NAME = ?, BIRTH_DATE = ?, EMAIL = ?, DNI = ?, PICTURE = ? WHERE ID_CLIENT = ?")
+    void modifyClient(String firstName, String familyName, LocalDate birthDate, String email, String dni, String picture, String id);
 
     @SqlQuery("SELECT EXISTS(SELECT 1 FROM CLIENTS WHERE ID_CLIENT = ?)")
     boolean isClient(String id);

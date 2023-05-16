@@ -1,7 +1,7 @@
 package com.svalero.servlet;
 import com.svalero.dao.Database;
-import com.svalero.dao.VideogameDAO;
-import com.svalero.domain.Videogame;
+import com.svalero.dao.ClientDAO;
+import com.svalero.domain.Client;
 import com.svalero.util.Utils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -19,18 +19,20 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.UUID;
 
-@WebServlet("/addedit-videogame")
+@WebServlet("/addedit-client")
 @MultipartConfig
-public class AddEditVideogameServlet extends HttpServlet {
+public class AddEditClientServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        String picturePath = request.getServletContext().getInitParameter("game-pic-path");
+        String picturePath = request.getServletContext().getInitParameter("client-pic-path");
 
-        String name = request.getParameter("name");
-        LocalDate releaseDate = Utils.dateReverseFormatter(request.getParameter("releaseDate"));
-        double price = Double.parseDouble(request.getParameter("price"));
+        String firstName = request.getParameter("firstName");
+        String familyName = request.getParameter("familyName");
+        LocalDate birthDate = Utils.dateReverseFormatter(request.getParameter("birthDate"));
+        String email = request.getParameter("email");
+        String dni = request.getParameter("dni");
 
         String id, idTemp = null;
         String action = request.getParameter("action");
@@ -45,9 +47,9 @@ public class AddEditVideogameServlet extends HttpServlet {
 
         try {
             Database.connect();
-            Videogame videogame = Database.jdbi.withExtension(VideogameDAO.class, dao -> dao.getVideogame(id));
+            Client client = Database.jdbi.withExtension(ClientDAO.class, dao -> dao.getClient(id));
             if (picturePart.getSize() == 0 && action.equals("edit") && !deletePicture) {
-                pictureName = videogame.getPicture();
+                pictureName = client.getPicture();
             } else if (picturePart.getSize() == 0 || deletePicture) {
                 pictureName = "no_picture.jpg";
             } else {
@@ -56,17 +58,17 @@ public class AddEditVideogameServlet extends HttpServlet {
                 Files.copy(pictureStream, Path.of(picturePath + File.separator + pictureName));
             }
             if (action.equals("edit")) {
-                Database.jdbi.withExtension(VideogameDAO.class, dao -> {
-                    dao.modifyVideogame(name, releaseDate, price, pictureName, id);
+                Database.jdbi.withExtension(ClientDAO.class, dao -> {
+                    dao.modifyClient(firstName,familyName, birthDate, email, dni, pictureName, id);
                     return null;
                 });
-                out.println("<div style='margin-top: 20px;' class='alert alert-success' role='alert'>Videogame successfully modified.</div>");
+                out.println("<div style='margin-top: 20px;' class='alert alert-success' role='alert'>Client successfully modified.</div>");
             } else {
-                Database.jdbi.withExtension(VideogameDAO.class, dao -> {
-                    dao.addVideogame(name, releaseDate, price, pictureName);
+                Database.jdbi.withExtension(ClientDAO.class, dao -> {
+                    dao.addClient(firstName, familyName, birthDate, email, dni, pictureName);
                     return null;
                 });
-                out.println("<div style='margin-top: 20px;' class='alert alert-success' role='alert'>Videogame successfully added to database.</div>");
+                out.println("<div style='margin-top: 20px;' class='alert alert-success' role='alert'>Client successfully added to database.</div>");
             }
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
