@@ -19,6 +19,14 @@
             cursor: pointer;
         }
 
+        input[type="radio"] {
+                    border: 2px solid #007bff;
+                    background-color: white;
+                    width: 1rem;
+                    height: 1rem;
+                    cursor: pointer;
+        }
+
         .modal-dialog {
             max-width: 400px;
         }

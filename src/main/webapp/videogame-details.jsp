@@ -5,6 +5,7 @@
 
 <%@ include file="includes/header.jsp" %>
 <%
+    session.removeAttribute("videogames");
     String id = request.getParameter("id");
     try {
     Database.connect();

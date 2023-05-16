@@ -20,7 +20,7 @@
         <p class="lead text-body-secondary">Search videogames</p>
         <%
             Database.connect();
-            List<Videogame> videogames = Database.jdbi.withExtension(VideogameDAO.class, VideogameDAO::getVideogames);
+            List<Videogame> videogames = Database.jdbi.withExtension(VideogameDAO.class, VideogameDAO::getVideogamesOrderByName);
         %>
         <form class="row g-3" method="post" action="search-videogame">
             <div class="col-md-6 mx-auto text-center">
@@ -30,7 +30,23 @@
             <label for="slider">Maximum price</label>
             <span id="current-price"><%= Database.jdbi.withExtension(VideogameDAO.class, VideogameDAO::getMaxPrice) %></span>
             <input type="range" id="price" name="price" min="0" max='<%= Database.jdbi.withExtension(VideogameDAO.class, VideogameDAO::getMaxPrice) %>' step="1" value="<%= Database.jdbi.withExtension(VideogameDAO.class, VideogameDAO::getMaxPrice) %>">
-            <input type="submit" value="Search"/>
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="form-check d-inline-flex me-3">
+                    <input class="form-check-input" type="radio" name="orderBy" id="orderByName" value="orderByName" checked>
+                    <label class="form-check-label ms-2" for="orderByName">
+                        Order by name
+                    </label>
+                </div>
+                <div class="form-check d-inline-flex">
+                    <input class="form-check-input" type="radio" name="orderBy" id="orderByPrice" value="orderByPrice">
+                    <label class="form-check-label ms-2" for="orderByPrice">
+                        Order by price
+                    </label>
+                </div>
+            </div>
+            <div>
+                <input type="submit" value="Search"/>
+            </div>
         </form>
       </div>
     </div>
@@ -53,8 +69,8 @@
             int initialValue = (currentPage - 1) * recordsPerPage + 1;
             int finalValue = currentPage * recordsPerPage;
 
-            if (request.getAttribute("videogames") != null) {
-                videogames = (List<Videogame>) request.getAttribute("videogames");
+            if (session.getAttribute("videogames") != null) {
+                videogames = (List<Videogame>) session.getAttribute("videogames");
             }
 
             List<Videogame> paginatedVideogames = videogames.stream()
@@ -101,6 +117,7 @@
           </div>
         </div>
       </div>
+
       <div class="d-flex justify-content-center">
         <nav>
           <ul class="pagination">

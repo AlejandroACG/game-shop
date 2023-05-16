@@ -5,6 +5,7 @@
 <%@ include file="includes/header.jsp" %>
 
 <%
+    session.removeAttribute("videogames");
     String action = request.getParameter("action");
     String name = request.getParameter("name");
     if (name == null) name = "";
@@ -50,8 +51,10 @@
                     if (action.equals("edit")) {
                 %>
                 <div class="col-md-6">
-                    <label for="deletePicture" class="form-label">Check this box to use our default cover picture: </label>
-                    <input type="checkbox" class="form-check-input" id="deletePicture" name="deletePicture">
+                    <div class="form-check">
+                        <label for="deletePicture" class="form-check-label">Check this box to use our default cover picture</label>
+                        <input type="checkbox" class="form-check-input" id="deletePicture" name="deletePicture">
+                    </div>
                     <input type="hidden" name="id" value='<%= request.getParameter("id") %>'/>
                     <input type="hidden" name="action" value="edit">
                 </div>

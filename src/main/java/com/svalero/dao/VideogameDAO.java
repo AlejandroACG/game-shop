@@ -11,9 +11,21 @@ public interface VideogameDAO {
     @UseRowMapper(VideogameMapper.class)
     List<Videogame> getVideogames();
 
+    @SqlQuery("SELECT * FROM VIDEOGAMES ORDER BY NAME ASC")
+    @UseRowMapper(VideogameMapper.class)
+    List<Videogame> getVideogamesOrderByName();
+
     @SqlQuery("SELECT * FROM VIDEOGAMES WHERE UPPER(NAME) LIKE UPPER('%' || ? || '%') AND PRICE <= ?")
     @UseRowMapper(VideogameMapper.class)
     List<Videogame> getVideogamesByNamePrice(String name, double price);
+
+    @SqlQuery("SELECT * FROM VIDEOGAMES WHERE UPPER(NAME) LIKE UPPER('%' || ? || '%') AND PRICE <= ? ORDER BY NAME ASC")
+    @UseRowMapper(VideogameMapper.class)
+    List<Videogame> getVideogamesByNamePriceOrderByName(String name, double price);
+
+    @SqlQuery("SELECT * FROM VIDEOGAMES WHERE UPPER(NAME) LIKE UPPER('%' || ? || '%') AND PRICE <= ? ORDER BY PRICE DESC")
+    @UseRowMapper(VideogameMapper.class)
+    List<Videogame> getVideogamesByNamePriceOrderByPrice(String name, double price);
 
     @SqlQuery("SELECT * FROM VIDEOGAMES WHERE PRICE <= ?")
     @UseRowMapper(VideogameMapper.class)
