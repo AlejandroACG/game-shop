@@ -6,7 +6,10 @@
 
 <%@ include file="includes/header.jsp" %>
 
-<% session.removeAttribute("videogames"); %>
+<%
+    session.removeAttribute("videogames");
+    session.removeAttribute("clients");
+%>
 
 <main>
   <section class="py-5 text-center container">

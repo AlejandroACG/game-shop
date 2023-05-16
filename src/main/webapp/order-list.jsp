@@ -1,1 +1,4 @@
-<% session.removeAttribute("videogames"); %>
+<%
+    session.removeAttribute("videogames");
+    session.removeAttribute("clients");
+%>

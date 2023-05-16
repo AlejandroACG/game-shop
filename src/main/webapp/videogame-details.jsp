@@ -7,6 +7,8 @@
 
 <%
     session.removeAttribute("videogames");
+    session.removeAttribute("clients");
+
     String id = request.getParameter("id");
     try {
     Database.connect();
