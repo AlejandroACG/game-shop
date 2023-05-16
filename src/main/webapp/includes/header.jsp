@@ -20,11 +20,17 @@
         }
 
         input[type="radio"] {
-                    border: 2px solid #007bff;
-                    background-color: white;
-                    width: 1rem;
-                    height: 1rem;
-                    cursor: pointer;
+            border: 2px solid #007bff;
+            background-color: white;
+            width: 1rem;
+            height: 1rem;
+            cursor: pointer;
+        }
+
+        input[type="text"] {
+            border: 2px solid #007bff;
+            background-color: white;
+            cursor: pointer;
         }
 
         .modal-dialog {
