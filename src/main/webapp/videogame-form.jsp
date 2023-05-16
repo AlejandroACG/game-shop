@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-md-6">
                     <label for="price" class="form-label">Price</label>
-                    <input type="text" class="form-control" id="price" name="price" value="<%= price %>" required>
+                    <input type="number" class="form-control" id="price" name="price" step="0.01" value="<%= price %>" required>
                 </div>
                 <div class="col-md-6">
                     <label for="releaseDate">Release date</label>

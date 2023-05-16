@@ -15,7 +15,8 @@
         input[type="radio"],
         input[type="text"],
         input[type="date"],
-        input[type="file"] {
+        input[type="file"],
+        input[type="number"] {
             border: 2px solid #007bff;
             background-color: white;
             cursor: pointer;
