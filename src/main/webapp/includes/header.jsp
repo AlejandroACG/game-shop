@@ -138,6 +138,7 @@
         }
         body {
           margin-bottom: 60px;
+          background-color: lightgray;
         }
         footer {
             position: absolute;
