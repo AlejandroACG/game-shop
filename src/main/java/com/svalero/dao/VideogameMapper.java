@@ -11,13 +11,10 @@ import static com.svalero.dao.Database.jdbi;
 public class VideogameMapper implements RowMapper<Videogame> {
     @Override
     public Videogame map(ResultSet rs, StatementContext ctx) throws SQLException {
-        int videogameId = rs.getInt("ID_VIDEOGAME");
-        OrderDAO orderDAO = jdbi.onDemand(OrderDAO.class);
-        List<Order> orders = orderDAO.getOrdersByVideogame(videogameId);
-        return new Videogame(videogameId,
+        return new Videogame(rs.getString("ID_VIDEOGAME"),
                 rs.getString("NAME"),
                 rs.getDate("RELEASE_DATE").toLocalDate(),
                 rs.getDouble("PRICE"),
-                orders);
+                rs.getString("PICTURE"));
     }
 }

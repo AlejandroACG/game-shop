@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @NoArgsConstructor
 public class Client {
-    private int id;
+    private String id;
     @NonNull
     private String firstName;
     @NonNull
@@ -24,5 +24,5 @@ public class Client {
     @NonNull
     private String dni;
     @NonNull
-    private List<Order> orders;
+    String picture;
 }

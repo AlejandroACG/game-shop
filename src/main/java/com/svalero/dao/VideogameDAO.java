@@ -11,19 +11,42 @@ public interface VideogameDAO {
     @UseRowMapper(VideogameMapper.class)
     List<Videogame> getVideogames();
 
+    @SqlQuery("SELECT * FROM VIDEOGAMES ORDER BY NAME ASC")
+    @UseRowMapper(VideogameMapper.class)
+    List<Videogame> getVideogamesOrderByName();
+
+    @SqlQuery("SELECT * FROM VIDEOGAMES WHERE UPPER(NAME) LIKE UPPER('%' || ? || '%') AND PRICE <= ?")
+    @UseRowMapper(VideogameMapper.class)
+    List<Videogame> getVideogamesByNamePrice(String name, double price);
+
+    @SqlQuery("SELECT * FROM VIDEOGAMES WHERE UPPER(NAME) LIKE UPPER('%' || ? || '%') AND PRICE <= ? ORDER BY NAME ASC")
+    @UseRowMapper(VideogameMapper.class)
+    List<Videogame> getVideogamesByNamePriceOrderByName(String name, double price);
+
+    @SqlQuery("SELECT * FROM VIDEOGAMES WHERE UPPER(NAME) LIKE UPPER('%' || ? || '%') AND PRICE <= ? ORDER BY PRICE DESC")
+    @UseRowMapper(VideogameMapper.class)
+    List<Videogame> getVideogamesByNamePriceOrderByPrice(String name, double price);
+
+    @SqlQuery("SELECT * FROM VIDEOGAMES WHERE PRICE <= ?")
+    @UseRowMapper(VideogameMapper.class)
+    List<Videogame> getVideogamesByPrice(double price);
+
     @SqlQuery("SELECT * FROM VIDEOGAMES WHERE ID_VIDEOGAME = ?")
     @UseRowMapper(VideogameMapper.class)
-    Videogame getVideogame(int id);
+    Videogame getVideogame(String id);
 
-    @SqlUpdate("INSERT INTO VIDEOGAMES (NAME, RELEASE_DATE, PRICE) VALUES (?, ?, ?)")
-    void addVideogame(String name, LocalDate releaseDate, double price);
+    @SqlUpdate("INSERT INTO VIDEOGAMES (NAME, RELEASE_DATE, PRICE, PICTURE) VALUES (?, ?, ?, ?)")
+    void addVideogame(String name, LocalDate releaseDate, double price, String picture);
 
-    @SqlUpdate("UPDATE VIDEOGAMES SET NAME = ?, RELEASE_DATE = ?, PRICE = ? WHERE ID = ?")
-    void modifyVideogame(String name, LocalDate releaseDate, double price, String id);
+    @SqlUpdate("UPDATE VIDEOGAMES SET NAME = ?, RELEASE_DATE = ?, PRICE = ?, PICTURE = ? WHERE ID_VIDEOGAME = ?")
+    void modifyVideogame(String name, LocalDate releaseDate, double price, String picture, String id);
 
-    @SqlQuery("SELECT EXISTS(SELECT 1 FROM VIDEOGAMES WHERE ID = ?)")
+    @SqlQuery("SELECT EXISTS(SELECT 1 FROM VIDEOGAMES WHERE ID_VIDEOGAME = ?)")
     boolean isVideogame(String id);
 
+    @SqlQuery("SELECT CEIL(MAX(PRICE)) AS MAX_PRICE FROM VIDEOGAMES")
+    int getMaxPrice();
+
     @SqlUpdate("DELETE FROM VIDEOGAMES WHERE ID_VIDEOGAME = ?")
-    void deleteClient(int id);
+    void deleteVideogame(String id);
 }

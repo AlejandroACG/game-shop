@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @NoArgsConstructor
 public class Videogame {
-    private int id;
+    private String id;
     @NonNull
     private String name;
     @NonNull
@@ -20,5 +20,5 @@ public class Videogame {
     @NonNull
     private double price;
     @NonNull
-    private List<Order> orders;
+    String picture;
 }
