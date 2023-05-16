@@ -16,7 +16,8 @@
         input[type="text"],
         input[type="date"],
         input[type="file"],
-        input[type="number"] {
+        input[type="number"],
+        input[type="email"] {
             border: 2px solid #007bff;
             background-color: white;
             cursor: pointer;

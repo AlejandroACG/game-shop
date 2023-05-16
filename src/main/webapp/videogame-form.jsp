@@ -32,6 +32,7 @@
             </li>
           </ol>
         </nav>
+
         <div class="form-div" style="max-width: 600px; margin: 0 auto;">
             <form class="row g-3" method="post" action="addedit-videogame" enctype="multipart/form-data">
                 <div class="col-md-6">
@@ -79,6 +80,7 @@
                 </div>
             </form>
         </div>
+
         <div class="modal fade" id="confirmationModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -107,7 +109,7 @@
                 var action = "<%= action %>";
 
                 if (action === "edit") {
-                    $("#confirmationMessage").text("Are you sure you want to edit <%= name %> into " + name + "?");
+                    $("#confirmationMessage").text("Are you sure you want to edit <%= name %>?");
                 } else {
                     $("#confirmationMessage").text("Are you sure you want to register " + name + "?");
                 }
