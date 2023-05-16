@@ -11,26 +11,20 @@
     <meta name="theme-color" content="#712cf9">
 
     <style>
-        input[type="checkbox"] {
+        input[type="checkbox"],
+        input[type="radio"],
+        input[type="text"],
+        input[type="date"],
+        input[type="file"] {
             border: 2px solid #007bff;
             background-color: white;
-            width: 1rem;
-            height: 1rem;
             cursor: pointer;
         }
 
+        input[type="checkbox"],
         input[type="radio"] {
-            border: 2px solid #007bff;
-            background-color: white;
             width: 1rem;
             height: 1rem;
-            cursor: pointer;
-        }
-
-        input[type="text"] {
-            border: 2px solid #007bff;
-            background-color: white;
-            cursor: pointer;
         }
 
         .modal-dialog {
