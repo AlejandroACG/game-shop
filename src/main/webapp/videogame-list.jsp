@@ -154,11 +154,11 @@
       const deleteConfirmationModal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'));
       const deleteConfirmationMessage = document.getElementById('deleteConfirmationMessage');
       const deleteConfirmButton = document.getElementById('deleteConfirmButton');
-      let deleteVideoGameId = '';
+      let videogameId = '';
 
       deleteButtons.forEach(button => {
         button.addEventListener('click', function() {
-          deleteVideoGameId = this.getAttribute('data-id');
+          videogameId = this.getAttribute('data-id');
           const name = this.getAttribute('data-name');
           const releaseDate = this.getAttribute('data-release-date');
           deleteConfirmationMessage.textContent = "Do you really want to delete " + name + " (" + releaseDate + ")?";
@@ -166,7 +166,7 @@
       });
 
       deleteConfirmButton.addEventListener('click', function() {
-        window.location.href = "delete-videogame?id=" + deleteVideoGameId;
+        window.location.href = "delete-videogame?id=" + videogameId;
         deleteConfirmationModal.hide();
       });
     });
