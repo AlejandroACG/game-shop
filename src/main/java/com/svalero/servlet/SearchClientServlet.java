@@ -1,2 +1,4 @@
-package com.svalero.servlet;public class SearchClientServlet {
+package com.svalero.servlet;
+
+public class SearchClientServlet {
 }

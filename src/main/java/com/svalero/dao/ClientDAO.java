@@ -11,6 +11,10 @@ public interface ClientDAO {
     @UseRowMapper(ClientMapper.class)
     List<Client> getClients();
 
+    @SqlQuery("SELECT * FROM CLIENTS ORDER BY FAMILY_NAME")
+    @UseRowMapper(ClientMapper.class)
+    List<Client> getClientsOrderByFamilyName();
+
     @SqlQuery("SELECT * FROM CLIENTS WHERE ID_CLIENT = ?")
     @UseRowMapper(ClientMapper.class)
     Client getClient(String id);

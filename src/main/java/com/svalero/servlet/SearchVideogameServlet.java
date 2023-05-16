@@ -28,7 +28,7 @@ public class SearchVideogameServlet extends HttpServlet {
                 videogames = Database.jdbi.withExtension(VideogameDAO.class, dao -> dao.getVideogamesByNamePriceOrderByName(name.trim(), price));
             }
             request.getSession().setAttribute("videogames", videogames);
-            request.getRequestDispatcher("videogame-list.jsp").forward(request, response);
+            response.sendRedirect("videogame-list.jsp");
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
         }
