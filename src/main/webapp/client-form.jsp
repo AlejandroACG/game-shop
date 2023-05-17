@@ -8,6 +8,7 @@
 <%
     session.removeAttribute("videogames");
     session.removeAttribute("clients");
+    session.removeAttribute("orders");
 
     String action = request.getParameter("action");
     String firstName = request.getParameter("firstName");

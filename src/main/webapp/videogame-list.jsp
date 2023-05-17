@@ -9,7 +9,10 @@
 
 <%@ include file="includes/header.jsp" %>
 
-<% session.removeAttribute("clients"); %>
+<%
+    session.removeAttribute("orders");
+    session.removeAttribute("clients");
+%>
 
 <main>
   <section class="py-5 text-center container">

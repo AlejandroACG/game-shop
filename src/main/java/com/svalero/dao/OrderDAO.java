@@ -11,6 +11,14 @@ public interface OrderDAO {
     @UseRowMapper(OrderMapper.class)
     List<Order> getOrders();
 
+    @SqlQuery("SELECT * FROM ORDERS ORDER BY ORDER_DATE DESC")
+    @UseRowMapper(OrderMapper.class)
+    List<Order> getOrdersOrderByReverseOrderDate();
+
+    @SqlQuery("SELECT * FROM ORDERS JOIN CLIENTS ON ORDERS.ID_CLIENT = CLIENTS.ID_CLIENT ORDER BY ORDERS.ORDER_DATE, CLIENTS.FAMILY_NAME, CLIENTS.FIRST_NAME")
+    @UseRowMapper(OrderMapper.class)
+    List<Order> getOrdersOrderByDateThenClient();
+
     @SqlQuery("SELECT * FROM ORDERS WHERE ID_CLIENT = ?")
     @UseRowMapper(OrderMapper.class)
     List<Order> getOrdersByClient(String id);

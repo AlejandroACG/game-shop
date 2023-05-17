@@ -11,11 +11,11 @@ public interface ClientDAO {
     @UseRowMapper(ClientMapper.class)
     List<Client> getClients();
 
-    @SqlQuery("SELECT * FROM CLIENTS ORDER BY FAMILY_NAME")
+    @SqlQuery("SELECT * FROM CLIENTS ORDER BY FAMILY_NAME, FIRST_NAME")
     @UseRowMapper(ClientMapper.class)
     List<Client> getClientsOrderByFamilyName();
 
-    @SqlQuery("SELECT * FROM CLIENTS WHERE UPPER(FIRST_NAME || ' ' || FAMILY_NAME) LIKE UPPER('%' || ? || '%') ORDER BY FAMILY_NAME")
+    @SqlQuery("SELECT * FROM CLIENTS WHERE UPPER(FIRST_NAME || ' ' || FAMILY_NAME) LIKE UPPER('%' || ? || '%') ORDER BY FAMILY_NAME, FIRST_NAME")
     @UseRowMapper(ClientMapper.class)
     List<Client> getClientsByFullNameOrderByFamilyName(String fullName);
 
