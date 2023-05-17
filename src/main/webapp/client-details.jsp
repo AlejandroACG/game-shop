@@ -27,7 +27,7 @@
 
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="order-list.jsp">Clients</a></li>
+      <li class="breadcrumb-item"><a href="client-list.jsp">Clients</a></li>
       <li class="breadcrumb-item active"><%= client.getFamilyName() %>, <%= client.getFirstName() %></li>
     </ol>
   </nav>
@@ -64,7 +64,7 @@
                 </table>
             </div>
             <div class="col-md-6">
-                <img src="../game-shop_data/clients/<%= client.getPicture() %>" class="img-fluid small-client-picture">
+                <img src="../game-shop_data/clients/<%= client.getPicture() %>" class="img-fluid small-picture">
             </div>
         </div>
     </div>

@@ -36,7 +36,7 @@
             width: 150px;
         }
 
-        .small-client-picture {
+        .small-picture {
             max-height: 325px;
         }
 
