@@ -36,6 +36,10 @@
             width: 150px;
         }
 
+        .small-client-picture {
+            max-height: 325px;
+        }
+
         .modal-dialog {
             max-width: 400px;
         }

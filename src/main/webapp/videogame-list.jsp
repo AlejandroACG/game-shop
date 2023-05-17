@@ -90,12 +90,12 @@
           <div class="card shadow-sm">
             <img src="../game-shop_data/games/<%= videogame.getPicture() %>" class="bd-placeholder-img card-img-top"/>
             <div class="card-body">
-              <p class="card-text"><%= videogame.getName() %> (<%= videogame.getReleaseDate().format(DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH)) %>)</p>
+              <p class="card-text"><%= videogame.getName() %> (<%= videogame.getReleaseDate().getYear() %>)</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a href="videogame-details.jsp?id=<%= videogame.getId() %>" class="btn btn-sm btn-outline-secondary">View</a>
                   <a href="videogame-form.jsp?id=<%= videogame.getId() %>&action=edit&name=<%= videogame.getName() %>&releaseDate=<%= videogame.getReleaseDate() %>&price=<%= videogame.getPrice() %>" class="btn btn-sm btn-outline-dark">Edit</a>
-                  <a href="#" class="btn btn-sm btn-outline-danger delete-button" data-id="<%= videogame.getId() %>" data-name="<%= videogame.getName() %>" data-release-date="<%= videogame.getReleaseDate().format(DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH)) %>" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">Delete</a>
+                  <a href="#" class="btn btn-sm btn-outline-danger delete-button" data-id="<%= videogame.getId() %>" data-name="<%= videogame.getName() %>" data-release-date="<%= videogame.getReleaseDate().getYear() %>" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">Delete</a>
                 </div>
                 <small class="text-body-secondary">€<%= videogame.getPrice() %></small>
               </div>
