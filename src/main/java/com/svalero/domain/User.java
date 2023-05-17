@@ -5,23 +5,16 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class Client {
+public class User {
     private String id;
     @NonNull
-    private String firstName;
+    private String username;
     @NonNull
-    private String familyName;
-    @NonNull
-    private LocalDate birthDate;
-    @NonNull
-    private String email;
-    @NonNull
-    private String dni;
-    @NonNull
-    String picture;
+    private String password;
 }

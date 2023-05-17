@@ -1,12 +1,9 @@
 package com.svalero.dao;
-import com.svalero.domain.Order;
 import com.svalero.domain.Videogame;
 import org.jdbi.v3.core.mapper.RowMapper;
 import org.jdbi.v3.core.statement.StatementContext;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import static com.svalero.dao.Database.jdbi;
 
 public class VideogameMapper implements RowMapper<Videogame> {
     @Override
