@@ -143,7 +143,7 @@
         button.addEventListener('click', function() {
           orderId = this.getAttribute('data-id');
           const orderDate = this.getAttribute('data-order-date');
-          deleteConfirmationMessage.textContent = "Do you really want to delete order number" + orderId + " (" + orderDate + ")?";
+          deleteConfirmationMessage.textContent = "Do you really want to delete order #" + orderId + " (" + orderDate + ")?";
         });
       });
 
