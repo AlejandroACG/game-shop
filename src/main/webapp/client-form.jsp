@@ -28,12 +28,15 @@
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="client-list.jsp">Clients</a></li>
-            <li class="breadcrumb-item active">
-                <% if (action.equals("register")) {
-                    %>Add client<%
+            <% if (action.equals("register")) {
+                %><li class="breadcrumb-item active">Add client<%
                 } else {
-                    %>Edit <%= firstName %> <%= familyName %><%
-                } %>
+                    %>
+                        <li class="breadcrumb-item"><a href="client-details.jsp?id=<%= request.getParameter("id") %>"><%= familyName %>, <%= firstName %></a></li>
+                        <li class="breadcrumb-item active"> Edit
+                    <%
+                }
+            %>
             </li>
           </ol>
         </nav>

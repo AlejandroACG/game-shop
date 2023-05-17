@@ -24,12 +24,15 @@
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="videogame-list.jsp">Videogames</a></li>
-            <li class="breadcrumb-item active">
-                <% if (action.equals("register")) {
-                    %>Add videogame<%
+            <% if (action.equals("register")) {
+                %><li class="breadcrumb-item active">Add videogame<%
                 } else {
-                    %>Edit <%= name %><%
-                } %>
+                    %>
+                        <li class="breadcrumb-item"><a href="videogame-details.jsp?id=<%= request.getParameter("id") %>"><%= name %></a></li>
+                        <li class="breadcrumb-item active"> Edit
+                    <%
+                }
+            %>
             </li>
           </ol>
         </nav>
