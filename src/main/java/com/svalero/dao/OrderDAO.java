@@ -11,6 +11,14 @@ public interface OrderDAO {
     @UseRowMapper(OrderMapper.class)
     List<Order> getOrders();
 
+    @SqlQuery("SELECT * FROM ORDERS ORDER BY ORDER_DATE DESC")
+    @UseRowMapper(OrderMapper.class)
+    List<Order> getOrdersOrderByReverseOrderDate();
+
+    @SqlQuery("SELECT * FROM ORDERS JOIN CLIENTS ON ORDERS.ID_CLIENT = CLIENTS.ID_CLIENT ORDER BY ORDERS.ORDER_DATE, CLIENTS.FAMILY_NAME, CLIENTS.FIRST_NAME")
+    @UseRowMapper(OrderMapper.class)
+    List<Order> getOrdersOrderByDateThenClient();
+
     @SqlQuery("SELECT * FROM ORDERS WHERE ID_CLIENT = ?")
     @UseRowMapper(OrderMapper.class)
     List<Order> getOrdersByClient(String id);
@@ -18,6 +26,14 @@ public interface OrderDAO {
     @SqlQuery("SELECT * FROM ORDERS WHERE ID_VIDEOGAME = ?")
     @UseRowMapper(OrderMapper.class)
     List<Order> getOrdersByVideogame(String id);
+
+    @SqlQuery("SELECT * FROM ORDERS JOIN CLIENTS ON ORDERS.ID_CLIENT = CLIENTS.ID_CLIENT JOIN VIDEOGAMES ON ORDERS.ID_VIDEOGAME = VIDEOGAMES.ID_VIDEOGAME WHERE UPPER(CLIENTS.FIRST_NAME || ' ' || CLIENTS.FAMILY_NAME) LIKE UPPER('%' || ? || '%') AND UPPER(VIDEOGAMES.NAME) LIKE UPPER('%' || ? || '%') ORDER BY ORDERS.ORDER_DATE DESC, CLIENTS.FAMILY_NAME, CLIENTS.FIRST_NAME")
+    @UseRowMapper(OrderMapper.class)
+    List<Order> getOrdersByBothFullNames(String clientFullName, String videogameName);
+
+    @SqlQuery("SELECT * FROM ORDERS WHERE ID_ORDER = ?")
+    @UseRowMapper(OrderMapper.class)
+    Order getOrder(String id);
 
     @SqlUpdate("INSERT INTO ORDERS (ID_CLIENT, ID_VIDEOGAME, ORDER_DATE) VALUES (?, ?, ?)")
     void addOrder(String clientId, String videogameId, LocalDate orderDate);

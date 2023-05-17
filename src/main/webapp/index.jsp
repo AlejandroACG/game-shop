@@ -9,6 +9,7 @@
 <%
     session.removeAttribute("videogames");
     session.removeAttribute("clients");
+    session.removeAttribute("orders");
 %>
 
 <main>
@@ -20,5 +21,6 @@
       </div>
     </div>
   </section>
+</main>
 
 <%@ include file="includes/footer.jsp" %>
