@@ -3,3 +3,5 @@
     session.removeAttribute("clients");
     session.removeAttribute("orders");
 %>
+<main>
+</main>

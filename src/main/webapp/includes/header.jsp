@@ -29,6 +29,13 @@
             height: 1rem;
         }
 
+        .table th, .table td {
+            padding: 10px;
+        }
+        .table th {
+            width: 150px;
+        }
+
         .modal-dialog {
             max-width: 400px;
         }
