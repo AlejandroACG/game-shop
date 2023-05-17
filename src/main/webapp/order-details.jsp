@@ -33,11 +33,11 @@
   </nav>
 
     <div class="container">
-        <h2>Order details</h2>
+        <h2>Order details <a href="#" class="btn btn-sm btn-outline-danger delete-button" data-id="<%= order.getId() %>" data-order-date="<%= order.getOrderDate().format(DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH)) %>" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">Delete</a></h2>
         <table class="table">
             <tr>
                 <th>ID</th>
-                <td>#<%= order.getId() %> <a href="#" class="btn btn-sm btn-outline-danger delete-button" data-id="<%= order.getId() %>" data-order-date="<%= order.getOrderDate().format(DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH)) %>" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">Delete</a></td>
+                <td>#<%= order.getId() %></td>
             </tr>
             <tr>
                 <th>Client</th>

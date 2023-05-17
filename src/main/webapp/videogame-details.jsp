@@ -35,11 +35,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h2>Videogame details</h2>
+                <h2>Videogame details <a href="videogame-form.jsp?id=<%= videogame.getId() %>&action=edit&name=<%= videogame.getName() %>&releaseDate=<%= videogame.getReleaseDate() %>&price=<%= videogame.getPrice() %>" class="btn btn-sm btn-outline-dark">Edit</a><a href="#" class="btn btn-sm btn-outline-danger delete-button" data-id="<%= videogame.getId() %>" data-name="<%= videogame.getName() %>" data-release-date="<%= videogame.getReleaseDate().getYear() %>" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">Delete</a></h2>
                 <table class="table">
                     <tr>
                         <th>ID</th>
-                        <td>#<%= videogame.getId() %> <a href="#" class="btn btn-sm btn-outline-danger delete-button" data-id="<%= videogame.getId() %>" data-name="<%= videogame.getName() %>" data-release-date="<%= videogame.getReleaseDate().getYear() %>" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">Delete</a></td>
+                        <td>#<%= videogame.getId() %></td>
                     </tr>
                     <tr>
                         <th>Title</th>

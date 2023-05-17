@@ -35,11 +35,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h2>Client details</h2>
+                <h2>Client details <a href="client-form.jsp?id=<%= client.getId() %>&action=edit&firstName=<%= client.getFirstName() %>&familyName=<%= client.getFamilyName() %>&birthDate=<%= client.getBirthDate() %>&email=<%= client.getEmail() %>&dni=<%= client.getDni() %>" class="btn btn-sm btn-outline-dark">Edit</a><a href="#" class="btn btn-sm btn-outline-danger delete-button" data-id="<%= client.getId() %>" data-first-name="<%= client.getFirstName() %>" data-family-name="<%= client.getFamilyName() %>" data-dni="<%= client.getDni() %>" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">Delete</a></h2>
                 <table class="table">
                     <tr>
                         <th>ID</th>
-                        <td>#<%= client.getId() %> <a href="#" class="btn btn-sm btn-outline-danger delete-button" data-id="<%= client.getId() %>" data-first-name="<%= client.getFirstName() %>" data-family-name="<%= client.getFamilyName() %>" data-dni="<%= client.getDni() %>" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">Delete</a></td>
+                        <td>#<%= client.getId() %></td>
                     </tr>
                     <tr>
                         <th>First name</th>
