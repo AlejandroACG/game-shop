@@ -30,8 +30,8 @@
         %>
         <form class="row g-3" method="post" action="search-order">
             <div class="col-md-6 mx-auto text-center">
-                <label for="clientName" class="form-label">Client's name</label>
-                <input type="text" class="form-control" id="clientName" name="clientName">
+                <label for="clientFullName" class="form-label">Client's name</label>
+                <input type="text" class="form-control" id="clientFullName" name="clientFullName">
             </div>
             <div class="col-md-6 mx-auto text-center">
                 <label for="videogameName" class="form-label">Videogame's name</label>
